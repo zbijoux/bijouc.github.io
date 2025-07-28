@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bijoux’s Wanderlust Wishlist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Lato&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Lato', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f8f6;
+      color: #333;
+    }
+    header {
+      background-color: #ffb347;
+      padding: 2em;
+      text-align: center;
+      font-family: 'Pacifico', cursive;
+      color: white;
+    }
+    h1 {
+      font-size: 3em;
+      margin: 0;
+    }
+    p.tagline {
+      font-size: 1.2em;
+      margin-top: 0.5em;
+    }
+    .shuffle-container {
+      text-align: center;
+      margin-top: 1em;
+    }
+    .shuffle-container button {
+      background-color: #ffb347;
+      color: white;
+      font-size: 1em;
+      padding: 0.5em 1em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 2em;
+      gap: 1.5em;
+      justify-content: center;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      width: 300px;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card-content {
+      padding: 1em;
+    }
+    footer {
+      background-color: #ffb347;
+      padding: 1em;
+      text-align: center;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bijoux’s Wanderlust Wishlist</h1>
+    <p class="tagline">"Travel isn’t always a destination—it’s a dream in motion."</p>
+  </header>
+
+  <div class="shuffle-container">
+    <button onclick="shuffleCards()">Shuffle Destinations</button>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <img src="https://source.unsplash.com/300x200/?paris" alt="Paris">
+      <div class="card-content">
+        <h2>Paris, France</h2>
+        <p>City of Light, croissants, and art.</p>
+        <label>
+          <input type="checkbox" onchange="markVisited(this)"> Visited
+        </label>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://source.unsplash.com/300x200/?tokyo" alt="Tokyo">
+      <div class="card-content">
+        <h2>Tokyo, Japan</h2>
+        <p>Neon streets and serene temples.</p>
+        <label>
+          <input type="checkbox" onchange="markVisited(this)"> Visited
+        </label>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://source.unsplash.com/300x200/?bali" alt="Bali">
+      <div class="card-content">
+        <h2>Bali, Indonesia</h2>
+        <p>Yoga, beaches, and jungle adventures.</p>
+        <label>
+          <input type="checkbox" onchange="markVisited(this)"> Visited
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Made with wanderlust ❤️ | Bijoux’s travel wishlist &copy; 2025</p>
+  </footer>
+
+  <script>
+    function shuffleCards() {
+      const container = document.querySelector('.grid');
+      const cards = Array.from(container.children);
+      const shuffled = cards.sort(() => 0.5 - Math.random());
+      container.innerHTML = '';
+      shuffled.forEach(card => container.appendChild(card));
+    }
+
+    function markVisited(checkbox) {
+      const card = checkbox.closest('.card');
+      if (checkbox.checked) {
+        card.style.opacity = '0.5';
+      } else {
+        card.style.opacity = '1';
+      }
+    }
+  </script>
+</body>
+</html>
